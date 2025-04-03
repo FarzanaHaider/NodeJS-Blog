@@ -250,18 +250,15 @@ img {
   filter: none;
 }
 
-
 .article {
   white-space: pre-wrap;
 }
-
 
 /* Footer */
 .footer {
   margin: 4rem;
   text-align: center;
 }
-
 
 /* Dashboard Admin */
 .admin-title {
@@ -298,8 +295,8 @@ img {
 
 /* SeachBar */
 .searchBar {
-  /* visibility: hidden;
-  transform: translateY(-100px); */
+  visibility: hidden;
+  transform: translateY(-100px);
   background-color: var(--black);
   padding: 4px 0;
   position: absolute;
