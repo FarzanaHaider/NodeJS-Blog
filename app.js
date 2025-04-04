@@ -24,6 +24,7 @@ app.set('view engine', 'ejs'); //Setting view engine
 
 //Set up basic route
 app.use('/', require('./server/routes/main'));
+app.use('/', require('./server/routes/admin'));
 
 //Listen to port number
 app.listen(PORT,()=>{
