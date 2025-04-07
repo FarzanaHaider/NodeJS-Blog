@@ -30,10 +30,6 @@ const authMiddleware = (req, res, next) => {
 
 }
 
-
-
-
-
 // Get 
 // Admin - Login Page
 
@@ -157,6 +153,54 @@ router.post('/add-post', authMiddleware, async (req,res) => {
 
 });
 
+
+// Get
+// Admin - Edit Post
+
+router.get('/edit-post/:id', authMiddleware, async (req,res) => { 
+
+    try {
+
+        const locals = {
+            title: "Edit Post",
+            description: "Free NodeJS User Management System",
+        };
+        
+        const data = await Post.findOne({_id: req.params.id});
+
+        res.render('admin/edit-post', {
+            locals,
+            data,
+            layout: adminLayout
+        });
+
+    } catch (error) {
+        console.log(error);
+    }
+
+});
+
+// Put
+// Admin - Edit Post
+
+router.put('/edit-post/:id', authMiddleware, async (req,res) => { 
+
+    try {
+        
+        await Post.findByIdAndUpdate(req.params.id, {
+            title: req.body.title,
+            body: req.body.body,
+            updatedAt: Date.now()
+        });
+
+        res.redirect(`/edit-post/${req.params.id}`);
+
+    } catch (error) {
+        console.log(error);
+    }
+
+});
+
 // router.post('/admin', async (req,res) => {         //Get route , this is a homepage route
     
 //     try {
@@ -194,6 +238,28 @@ router.post('/register', async (req,res) => {         //Get route , this is a ho
         console.log(error);
     }
     
+});
+
+// Delete
+// Admin - Delete Post
+
+router.delete('/delete-post/:id', async (req,res) => {         //Get route , this is a homepage route
+
+    try {
+        await Post.deleteOne( {_id: req.params.id } );
+        res.redirect('/dashboard');
+    } catch(error) {
+        console.log(error);
+    }
+
+});
+
+// Get
+// Admin Logout
+router.get('/logout', (req,res) => {
+    res.clearCookie('token');
+    // res.json({ message: 'Logout seccessful.'} );
+    res.redirect('/');
 });
 
 module.exports = router;

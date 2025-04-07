@@ -28,7 +28,8 @@ router.get('', async (req,res) => {         //Get route , this is a homepage rou
             locals, 
             data,
             current: page,
-            nextPage: hasNextPage ? nextPage : null
+            nextPage: hasNextPage ? nextPage : null,
+            currentRoute:'/'
         });
 
     } catch(error) {
@@ -64,7 +65,8 @@ router.get('/post/:id', async (req,res) => {         //Get route , this is a hom
 
         const locals = {
             title: data.title,
-            description: "Simple Blog created with NodeJs, Express & MongoDB."
+            description: "Simple Blog created with NodeJs, Express & MongoDB.",
+            currentRoute: `/post/${slug}`
         }
 
         res.render('post', {locals, data});
@@ -108,7 +110,9 @@ router.post('/search', async (req,res) => {         //Get route , this is a home
 }); 
 
 router.get('/about',(req,res) => {         //Get route , this is a homepage route
-    res.render('about');
+    res.render('about', {
+        currentRoute: '/about'
+    });
 });
 
 module.exports = router;
