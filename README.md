@@ -16,7 +16,7 @@ A full-stack blogging platform built with Node.js, Express.js, MongoDB, and EJS.
 - **Backend**: [Node.js](https://nodejs.org/), [Express.js](https://expressjs.com/)
 - **Database**: [MongoDB](https://www.mongodb.com/) with [Mongoose](https://mongoosejs.com/)
 - **Templating Engine**: [EJS](https://ejs.co/)
-- **Frontend**: HTML, CSS
+- **Frontend**: HTML, CSS, Javascript
 - **Version Control**: [Git](https://git-scm.com/)
 
 ## 📁 Project Structure
